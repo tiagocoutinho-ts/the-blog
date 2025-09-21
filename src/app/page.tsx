@@ -5,6 +5,7 @@ import { SpinLoader } from "@/components/SpinLoader"
 import PostsList from "@/components/PostsList"
 import Image from "next/image"
 import Link from "next/link"
+import { PostHeading } from "@/components/PostHeading"
 
 export default async function HomePage() {
 
@@ -27,10 +28,10 @@ export default async function HomePage() {
             <time 
             className="text-slate-600 text-sm/tight block "
             dateTime="2025-09-19">20/04/2025 05:20</time>
-            
-            <h1 className="text-2xl/tight mb-4 font-extrabold sm:text-4xl">
-              <Link href="#">Lorem ipsum dolor sit amet.</Link>
-            </h1>
+
+            <PostHeading as="h1" url="#">
+              Lorem ipsum dolor sit amet consectetur.
+            </PostHeading>
 
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati porro voluptatem magnam dolores ducimus facere temporibus non, tenetur accusantium corrupti repellat reprehenderit eveniet minus totam, quia veritatis fugit autem necessitatibus?</p>
           </div>
