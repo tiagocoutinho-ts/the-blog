@@ -6,36 +6,41 @@ export default async function PostsList() {
   const posts = await postRepository.findAll()
   return (
     <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-      {posts.map(post => (
-        <div className="flex flex-col gap-4 group" key={post.id}>
-          <PostCoverImage
-            linkProps={{
-              href: `/post/${post.slug}`
-            }}
+      {posts.map(post => {
+        const slug = "something"
+        const postLink = `/post/${slug}`
 
-            imageProps={{
-              width: 1200,
-              height: 720,
-              src: post.coverImageUrl,
-              alt: post.title,
-            }}
-          />
+        return (
+          <div className="flex flex-col gap-4 group" key={post.id}>
+            <PostCoverImage
+              linkProps={{
+                href: postLink,
+              }}
 
-          <div className="flex flex-col gap-4 sm: justify-center">
-            <time
-              className="text-slate-600 text-sm/tight block "
-              dateTime={post.createdAt}>
-              {post.createdAt}
-            </time>
+              imageProps={{
+                width: 1200,
+                height: 720,
+                src: post.coverImageUrl,
+                alt: post.title,
+              }}
+            />
 
-            <PostHeading as="h2" url="#">
-              {post.title}
-            </PostHeading>
+            <div className="flex flex-col gap-4 sm: justify-center">
+              <time
+                className="text-slate-600 text-sm/tight block "
+                dateTime={post.createdAt}>
+                {post.createdAt}
+              </time>
 
-            <p>{post.excerpt}</p>
+              <PostHeading as="h2" url={postLink}>
+                {post.title}
+              </PostHeading>
+
+              <p>{post.excerpt}</p>
+            </div>
           </div>
-        </div>
-      ))}
+        )
+      })}
     </div>
   )
 }
