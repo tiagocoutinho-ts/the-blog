@@ -1,34 +1,31 @@
 import { PostCoverImage } from "../PostCoverImage";
-import { PostHeading } from "../PostHeading";
+import { PostSummary } from "../PostSummary";
 
 export function PostFeatured() {
-    return (
-        <section className="grid grid-cols-1 gap-8 mb-16 sm:grid-cols-2 group">
-        <PostCoverImage
-          linkProps={{
-            href: "/post/exemple"
-          }}
+  const slug = "somewhere"
+  const postLink = `/post/${slug}`
+  return (
+    <section className="grid grid-cols-1 gap-8 mb-16 sm:grid-cols-2 group">
+      <PostCoverImage
+        linkProps={{
+          href: postLink
+        }}
 
-          imageProps={{
-            width: 1200,
-            height: 720,
-            src: "/images/bryen_9.png",
-            alt: "Alt da imagem",
-            priority: true
-          }}
-        />
+        imageProps={{
+          width: 1200,
+          height: 720,
+          src: "/images/bryen_9.png",
+          alt: "Alt da imagem",
+          priority: true
+        }}
+      />
 
-        <div className="flex flex-col gap-4 sm: justify-center">
-          <time
-            className="text-slate-600 text-sm/tight block "
-            dateTime="2025-09-19">20/04/2025 05:20</time>
-
-          <PostHeading as="h1" url="#">
-            Lorem ipsum dolor sit amet consectetur.
-          </PostHeading>
-
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati porro voluptatem magnam dolores ducimus facere temporibus non, tenetur accusantium corrupti repellat reprehenderit eveniet minus totam, quia veritatis fugit autem necessitatibus?</p>
-        </div>
-      </section>
-    )
+      <PostSummary
+        postLink={postLink}
+        postHeading="h1"
+        createdAt={"2025-04-08T00:24:38.616Z"}
+        excerpt={"O Next.js também é uma boa escolha para quem quer se preocupar com performance e SEO."}
+        title={"Rotina matinal de pessoas altamente eficazes"}/>
+    </section>
+  )
 }
