@@ -18,7 +18,7 @@ export async function PostFeatured() {
           width: 1200,
           height: 720,
           src: post.coverImageUrl,
-          alt: "Alt da imagem",
+          alt: post.title,
           priority: true
         }}
       />
