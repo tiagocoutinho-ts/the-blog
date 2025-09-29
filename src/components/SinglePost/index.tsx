@@ -1,37 +1,37 @@
-import { findPostBySlugCached } from "@/lib/post/queries"
-import { PostHeading } from "../PostHeading"
-import Image from "next/image"
-import { PostDate } from "../PostDate"
+import { findPostBySlugCached } from "@/lib/post/queries";
+import { PostHeading } from "../PostHeading";
+import Image from "next/image";
+import { PostDate } from "../PostDate";
+import { SafeMarkdown } from "../SafeMarkdown";
 
 type SinglePostPros = {
-    slug: string
-}
+  slug: string;
+};
 
 export async function SinglePost({ slug }: SinglePostPros) {
-    const post = await findPostBySlugCached(slug)
+  const post = await findPostBySlugCached(slug);
 
-    return (
-        <article className="mb-16">
-            <header className="flex flex-col gap-4 mb-4">
-                <Image
-                    className="rounded-xl"
-                    src={post.coverImageUrl}
-                    width={1200}
-                    height={720}
-                    alt={post.title} />
+  return (
+    <article className="mb-16">
+      <header className="flex flex-col gap-4 mb-4">
+        <Image
+          className="rounded-xl"
+          src={post.coverImageUrl}
+          width={1200}
+          height={720}
+          alt={post.title}
+        />
 
-                <PostHeading url={`/post/${post.slug}`}>{post.title}</PostHeading>
+        <PostHeading url={`/post/${post.slug}`}>{post.title}</PostHeading>
 
-                <p>
-                    {post.author} | <PostDate datetime={post.createdAt}/>
-                </p>
+        <p>
+          {post.author} | <PostDate datetime={post.createdAt} />
+        </p>
 
-                <p className="mb-4 text-xl">{post.excerpt}</p>
+        <p className="mb-4 text-xl">{post.excerpt}</p>
 
-                <div>
-                    {post.content}
-                </div>
-            </header>
-        </article>
-    ) 
+        <SafeMarkdown markdown={post.content} />
+      </header>
+    </article>
+  );
 }

@@ -24,12 +24,12 @@ export default async function PostsList() {
                 alt: post.title,
               }}
             />
-            <PostSummary 
-              postLink={postLink} 
+            <PostSummary
+              postLink={postLink}
               postHeading="h2"
               createdAt={post.createdAt}
               excerpt={post.excerpt}
-              title={post.title}/>
+              title={post.title} />
           </div>
         )
       })}
