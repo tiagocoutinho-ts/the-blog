@@ -9,7 +9,7 @@ export const findAllPublicPostsCached = unstable_cache(cache(async () => {
   tags: ["posts"],
 })
 
-export const findPostBySlugCached = (slug: string) => unstable_cache(
+export const findPublicPostBySlugCached = (slug: string) => unstable_cache(
   cache(async (slug: string) => {
     const post = await postRepository.findBySlugPublic(slug).catch(() => undefined)
 
@@ -20,6 +20,3 @@ export const findPostBySlugCached = (slug: string) => unstable_cache(
     tags: [`post-${slug}`],
   },)(slug)
 
-export const findPostByIdCached = cache(
-    async (id: string) => await postRepository.findById(id)
-  )
