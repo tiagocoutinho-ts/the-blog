@@ -13,11 +13,9 @@ export default async function AdminPostPage() {
   return (
     <div>
       <h1>Page Post</h1>
-      {posts.map(e => (
-        //test findAllPostAdmin
-        <div className="bg-sky-950 m-2">
+      {posts.map((e, _i) => (
+        <div key={_i} className="bg-sky-950 m-2">
           <h1 className="text-white">{e.author}</h1>
-          <p className="text-white">{e.content}</p>
         </div>
       ))}
     </div>
